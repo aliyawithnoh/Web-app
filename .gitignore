@@ -1,0 +1,25 @@
+# Node.js dependencies
+node_modules/
+
+# SQLite database file
+db/database.sqlite
+
+# Logs
+logs/
+*.log
+
+# Environment files
+.env
+
+# MacOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# npm package lock file (optional if you prefer to keep it)
+package-lock.json
