@@ -101,7 +101,7 @@ body {
     width: 300px;
   }
 
-  .btn{
+  .btn, .edit-btn{
     /* display: inline-block; */
     font-size: 14px;
     font-weight: 600;
@@ -113,7 +113,7 @@ body {
     transition: 1s;
   }
 
-  .btn:hover{
+  .btn:hover, .edit-btn:hover{
     background: #ff0077;
     color: #4fb8ff;
   }
