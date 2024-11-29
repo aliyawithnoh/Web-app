@@ -1,6 +1,10 @@
-const Item = require('../models/item');  // Assuming you're using an ORM like Sequelize
+// Get all items
+const getItems = (req, res) => {
+  Item.findAll()
+    .then(items => res.status(200).json(items))
+    .catch(err => res.status(500).json({ error: err.message }));
+};
 
-// Controller to create a new item
 const createItem = (req, res) => {
   const { name, description, image } = req.body;
   Item.create({ name, description, image })
@@ -25,8 +29,41 @@ const deleteItem = (req, res) => {
     .catch(err => res.status(500).json({ error: err.message }));
 };
 
-// Export controllers
+
+// Get a single item by ID
+const getItem = (req, res) => {
+  const itemId = req.params.id;
+  Item.findByPk(itemId)
+    .then(item => {
+      if (item) {
+        res.status(200).json(item);
+      } else {
+        res.status(404).json({ error: 'Item not found' });
+      }
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+};
+
+// Update an existing item
+const updateItem = (req, res) => {
+  const itemId = req.params.id;
+  const { name, description, image } = req.body;
+
+  Item.update({ name, description, image }, { where: { id: itemId } })
+    .then(([rowsUpdated]) => {
+      if (rowsUpdated) {
+        res.status(200).json({ message: 'Item updated successfully' });
+      } else {
+        res.status(404).json({ error: 'Item not found' });
+      }
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+};
+
 module.exports = {
   createItem,
-  deleteItem
+  deleteItem,
+  getItems,
+  getItem,
+  updateItem
 };
