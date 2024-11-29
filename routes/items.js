@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const itemsController = require('../controllers/ItemsController'); // Ensure the path matches your structure
+const itemsController = require('../controllers/itemsController'); // Ensure the path matches your structure
 
 
 // Route to get all items
